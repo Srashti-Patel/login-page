@@ -1,24 +1,64 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import validation from "./loginValidation";
 
 function Login() {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState({});
+  const handleInput = (event) => {
+    setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Perform login validation here
+    setError(validation(values));
+  };
+
   return (
-    <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
+    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
       <div className="bg-white p-3 rounded w-25">
         <h2>Sign-In</h2>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="email"><strong>Email:</strong></label>
-            <input type="email" placeholder="Enter Email" className="form-control rounded-0" />
+            <label htmlFor="email">
+              <strong>Email:</strong>
+            </label>
+            <input
+              type="email"
+              placeholder="Enter Email"
+              onChange={handleInput}
+              name="email"
+              className="form-control rounded-0"
+            />
+            {error.email && <p className="text-danger">{error.email}</p>}
           </div>
           <div className="mb-3">
-            <label htmlFor="password"><strong>Password:</strong></label>
-            <input type="password" placeholder="Enter Password" className="form-control rounded-0" />
+            <label htmlFor="password">
+              <strong>Password:</strong>
+            </label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              onChange={handleInput}
+              name="password"
+              className="form-control rounded-0"
+            />
+            {error.password && <p className="text-danger">{error.password}</p>}
           </div>
-          <button className="btn btn-success w-100 rounded-0"><strong>Login</strong></button>
+          <button type="submit" className="btn btn-success w-100 rounded-0">
+            <strong>Login</strong>
+          </button>
           <p>You are agree to out terms and conditions</p>
-          <Link to="/signup" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">Create Account</Link>
-
+          <Link
+            to="/signup"
+            className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"
+          >
+            Create Account
+          </Link>
         </form>
       </div>
     </div>
