@@ -1,0 +1,39 @@
+# ========================
+# FRONTEND (React)
+# ========================
+/frontend/node_modules
+/frontend/build
+
+# ========================
+# BACKEND (Node)
+# ========================
+/backend/node_modules
+
+# ========================
+# ROOT node_modules (if any)
+/node_modules
+
+# ========================
+# ENV FILES (VERY IMPORTANT)
+/.env
+/backend/.env
+/frontend/.env
+
+# ========================
+# LOG FILES
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ========================
+# OS & MISC
+.DS_Store
+Thumbs.db
+
+# ========================
+# TESTING
+/coverage
+
+# ========================
+# OPTIONAL
+*.pem
