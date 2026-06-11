@@ -1,6 +1,7 @@
-import react from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
-function login() {
+function Login() {
   return (
     <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
       <div className="bg-white p-3 rounded w-25">
@@ -15,7 +16,7 @@ function login() {
           </div>
           <button className="btn btn-success w-100 rounded-0"><strong>Login</strong></button>
           <p>You are agree to out terms and conditions</p>
-          <button className="btn btn-default border w-100 bg-light rounded-0">Create Account</button>
+          <Link to="/signup" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">Create Account</Link>
 
         </form>
       </div>
@@ -23,4 +24,4 @@ function login() {
   );
 }
 
-export default login;
+export default Login;
